@@ -1,0 +1,256 @@
+:root{
+    --white-color: #fff;
+    --red-color: rgb(229, 9, 20);
+    --black-color: rgb(34, 31, 31);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+    background-color: var(--black-color);
+    color: var(--white-color);
+
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.menu{
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    height:70px;
+    width: 100%;
+    background-color: transparent;
+    padding: 1px 30px;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.logo{
+    
+}
+
+.links a{
+    margin-left: 15px;
+    display: inline-block;
+    padding: 10px;
+    
+}
+
+.link a.active{
+    border-raidus: 30px;
+}
+
+.form-container{
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    
+}
+
+.wrapper h3{
+    font-size: 46px;
+    margin-bottom: 20px;
+}
+
+form {
+    
+}
+
+form > div{
+    margin: 0 0 20px 0;
+}
+
+form .form-group{
+    width: 100%;
+}
+
+form .form-group a{
+    font-size: 14px;
+}
+
+.form-group input{
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    margin: 5px 0;
+    color: white;
+    padding: 5px 10px;
+}
+
+.form-group input[type="submit"]{
+    background-color: #fff;
+    color: var(--black-color);
+    font-weight: 800;
+    border-radius: 8px;
+}
+
+.err-message{
+    font-size: 12;
+    color: var(--red-color);
+}
+
+.preview-video{
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.preview-video:before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.preview-video video
+{
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+.preview-video .thumbnail{
+    width: 100%;
+    object-fit: contain;
+}
+
+.preview-video .description {
+    z-index: 100;
+    position: absolute;
+    top: 40%;
+    left: 30px;
+}
+
+.preview-video .description h4{
+    font-size: 52px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.preview-video .description button {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: 1px solid white;
+    outline: none;
+    color: white;
+    border-radius: 30px;
+    margin-right: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.categories-container{
+    width: 100%;
+    padding: 5px;
+}
+
+.category{
+    display: flex;
+    flex-direction: column;
+}
+
+.category h3{
+    font-size: 22px;
+    font-weight: 200px;
+    margin-top: 12px;
+}
+
+
+.category .entities {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.entity-square{
+    width: 210px;
+    height: 118px;
+    border-radius: 5px;
+    min-width: 210px;
+    max-width: 210px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.entity-square img{
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================
+    CUSTOM SCROLLBAR
+    ============================== */
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: white;
+    border-radius: 6px;)
+}
+
+::-webkit-scrollbar:horizontal{
+    height: 2px;
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+    border-radius: 10px;
+}
