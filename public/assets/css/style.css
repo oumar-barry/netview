@@ -146,7 +146,7 @@ form .form-group a{
     z-index: 100;
     position: absolute;
     top: 40%;
-    left: 30px;
+    left: 20px;
 }
 
 .preview-video .description h4{
@@ -170,7 +170,13 @@ form .form-group a{
 
 .categories-container{
     width: 100%;
-    padding: 5px;
+    padding:  5px;
+}
+
+.categories-container .head{
+    font-size: 46px;
+    text-transform: uppercase;
+    margin-top: 10px
 }
 
 .category{

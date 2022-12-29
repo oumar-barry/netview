@@ -30,6 +30,46 @@
 
         }
 
+        public function createShowPreview(){
+            $entity = (new EntityProvider)->getTvShowsEntities(null,1)[0];
+            // Display a message if there is no entity available
+            
+            return $this->create($entity);
+        }
+
+        public function createMoviePreview(){
+            $entity = (new EntityProvider)->getMoviesEntities(null,1)[0];
+            // Display a message if there is no entity available
+            
+            return $this->create($entity);
+        }
+
+        public function tvShowsCategories(){
+            $categoriesHtml = "";
+            $categories = $this->model->getCategories();
+            foreach($categories as $category){
+                $categoriesHtml .= $this->createCategoryHtml($category,null,false,true);
+            }
+
+            return "<div class='categories-container'>
+                        <h2 class='head'> Series TV </h2>
+                        ".$categoriesHtml."
+                    </div>";
+        }
+
+        public function moviesCategories(){
+            $categoriesHtml = "";
+            $categories = $this->model->getCategories();
+            foreach($categories as $category){
+                $categoriesHtml .= $this->createCategoryHtml($category,null,true,false);
+            }
+
+            return "<div class='categories-container'>
+                        <h2 class='head'> Films </h2>
+                        ".$categoriesHtml."
+                    </div>";   
+        }
+
         public function showAllCategories(){
             $categoriesHtml = "";
             $categories = $this->model->getCategories();
@@ -52,9 +92,9 @@
             if($movies && $shows){
                 $entities = (new EntityProvider())->getEntities(null,30);
             } else if($movies){
-
+                $entities  = (new EntityProvider)->getMoviesEntities(null,30);
             } else if($shows) {
-
+                $entities  = (new EntityProvider)->getTvShowsEntities(null,30);
             } else {
                 $entities = [];
             } 
@@ -80,7 +120,7 @@
             $name = $entity->getName();
             
             return "<a href='".URL_ROOT."/entity/$id' class='entity-square' >
-                        <img src='".URL_ROOT."/".$thumbnail."' alt='$name'  />
+                        <img src='".URL_ROOT."/".$thumbnail."' alt='$name' title='$name'  />
                     </a>";
 
         }

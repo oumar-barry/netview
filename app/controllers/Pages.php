@@ -15,6 +15,7 @@
                 extract($_POST);
 
                 $data = [
+                    'title' => 'Register',
                     "firstname" => echap($firstname),
                     "lastname" => echap($lastname),
                     "username" => echap($username),
@@ -38,6 +39,7 @@
             } else {
                 
                 $data = [
+                    'title' => 'Register',
                     "firstname" => "",
                     "lastname" => "",
                     "username" => "",
@@ -59,6 +61,7 @@
             $preview = new VideoPreview();
             
             $data = [
+                'title' => 'Explorer',
                 'videoPreview' => $preview->create(),
                 'allCategories' => $preview->showAllCategories()
             ];
@@ -73,6 +76,7 @@
                 extract($_POST);
                 
                 $data = [
+                    'title' => 'Login',
                     'credential' => echap($credential),
                     'password' => $password
                 ];
@@ -92,6 +96,7 @@
             } else {
 
                 $data = [
+                    'title' => 'Register',
                     'credential' => '',
                     'password' => ''
                 ];
