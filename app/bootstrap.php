@@ -24,6 +24,8 @@
 	require 'models/EntityProvider_model.php';
 
 	require 'classes/User.php';
+	require 'classes/Video.php';
+	require 'classes/Season.php';
 	require 'classes/Entity.php';
 	require 'classes/EntityProvider.php';
 	require 'classes/VideoPreview.php';

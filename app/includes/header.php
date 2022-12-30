@@ -11,7 +11,7 @@
 <body>
         <div class="wrapper">
             <div class="menu">
-                <div class="logo">NETVIEW</div>
+                <div class="<?= URL_ROOT ?>/Pages/browse">NETVIEW</div>
                 <div class="links">
                     <a href="<?= URL_ROOT ?>/Pages/browse">Naviguer</a>
                     <a href="#">Category</a>

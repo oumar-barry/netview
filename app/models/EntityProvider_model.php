@@ -52,6 +52,16 @@
             return $this->db->singleRow();
         }
 
+        public function getEntityVideos($id){
+            $query = "SELECT videos.id as id, videos.title as title, videos.description as description, videos.filePath as filePath, videos.isMovie as isMovie, videos.uploadDate as uploadDate, videos.releaseDate as releaseDate, videos.views as views, videos.duration as duration, videos.season as season, videos.episode as episode, videos.entityId as entityId
+
+            FROM videos INNER JOIN entities ON videos.entityId = entities.id WHERE videos.isMovie = 0 and videos.entityId = :id ORDER BY season, episode ASC  ";
+
+            $this->db->query($query);
+            $this->db->bind('id',$id);
+            return $this->db->multipleRows();
+        }
+
     
 
         

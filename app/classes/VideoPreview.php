@@ -6,9 +6,10 @@
             $this->model = new VideoPreview_model();
         }
 
-        public function create($entity = ''){
+        public function create($entity = null){
             if(!$entity){
                 $entity = $this->getRandomEntity()[0];
+                
             }
 
             return "<div class='preview-video'  >
@@ -46,7 +47,7 @@
 
         public function createCategoryPreview($categoryId){
             $entity = (new EntityProvider())->getEntities($categoryId,1);
-
+            $entity = $entity ? $entity[0] : null; 
             // Display a message if there is no entity aailable 
             return $this->create($entity);
         }
@@ -90,15 +91,42 @@
             
         }
 
-        public function showCategory($categoryId){
+        public function showCategory($categoryId, $title = null){
             $categoryHtml = "";
             $category = $this->model->getCategory($categoryId);
             
-            $categoryHtml .= $this->createCategoryHtml($category,null,true,true);
+            $categoryHtml .= $this->createCategoryHtml($category,$title,true,true);
             
             return "<div class='categories-container nowrap'>
                         $categoryHtml
                     </div>";   
+        }
+
+
+        public function showAllSeasons($entity){
+            $seasons = $entity->getSeasons();
+            $seasonsHtml = "";
+
+            foreach($seasons as $season){
+                $currentSeason = $season->getSeasonNumber();
+                $episodesHtml = "";
+                foreach($season->getEpisodes() as $episode){
+                    $episodesHtml .= $this->createEpisodeHtml($episode);
+                }
+
+                $seasonsHtml .= "<div class='season'>
+                                    <h3 class='' > Saison $currentSeason </h3>
+                                    <div class='episodes'>
+                                        $episodesHtml
+                                    </div>
+                                </div>";
+
+            }
+
+            return "<div class='seasons'> 
+                            $seasonsHtml
+                    </div>";
+
         }
 
         public function getRandomEntity(){
@@ -137,8 +165,31 @@
             $thumbnail = $entity->getThumbnail();
             $name = $entity->getName();
             
-            return "<a href='".URL_ROOT."/entity/$id' class='entity-square' >
+            return "<a href='".URL_ROOT."/entities/$id' class='entity-square' >
                         <img src='".URL_ROOT."/".$thumbnail."' alt='$name' title='$name'  />
+                    </a>";
+
+        }
+
+        public function createEpisodeHtml($video){
+            $id = $video->getId();
+            $title = $video->getTitle();
+            $description = $video->getDescription();
+            $filePath = $video->getFilePath();
+            $thumbnail = (new Entity($video->getEntityId()))->getThumbnail();
+            $duration = $video->getDuration();
+            $episode = $video->getEpisode();
+
+            return "<a href='".URL_ROOT."/watch/$id' class='episode'>
+                        <div class='thumbnail' >
+                            <img src='".URL_ROOT."/$thumbnail'  alt='image of $title ' />
+                            <span class='seen'> </span>
+                            <span class='duration' > $duration </span>
+                        </div>
+                        <span class='episode-number' > Episode $episode </span>
+                        <span class='title'> $title </span>
+                        <span class='description'> $description </span>
+                        
                     </a>";
 
         }
