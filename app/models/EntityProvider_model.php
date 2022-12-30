@@ -8,7 +8,7 @@
 
         public function getEntities($category,$limit){
             $query = "SELECT * FROM entities ";
-            $query .= $category ? "WHERE category = :category " : "";
+            $query .= $category ? "WHERE categoryId = :category " : "";
             $query .= "ORDER BY RAND() LIMIT :limit";
 
             $this->db->query($query);

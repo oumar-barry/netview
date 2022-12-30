@@ -44,6 +44,13 @@
             return $this->create($entity);
         }
 
+        public function createCategoryPreview($categoryId){
+            $entity = (new EntityProvider())->getEntities($categoryId,1);
+
+            // Display a message if there is no entity aailable 
+            return $this->create($entity);
+        }
+
         public function tvShowsCategories(){
             $categoriesHtml = "";
             $categories = $this->model->getCategories();
@@ -83,6 +90,17 @@
             
         }
 
+        public function showCategory($categoryId){
+            $categoryHtml = "";
+            $category = $this->model->getCategory($categoryId);
+            
+            $categoryHtml .= $this->createCategoryHtml($category,null,true,true);
+            
+            return "<div class='categories-container nowrap'>
+                        $categoryHtml
+                    </div>";   
+        }
+
         public function getRandomEntity(){
             return (new EntityProvider())->getEntities(null,1); 
         }
@@ -105,7 +123,7 @@
             }
 
             return "<div class='category' >
-                        <h3> ".$title." </h3> 
+                        <h3> <a href='".URL_ROOT."/category/".$category->id."'> $title </a> </h3> 
                         <div class='entities'>
                             ".$entitiesHtml."
                         </div>

@@ -43,7 +43,14 @@ li {
     padding: 1px 30px;
     align-items: center;
     justify-content: space-between;
+    z-index: 10000;
     
+}
+
+.menu.active {
+    background-color: var(--red-color);
+    font-weight: 400;
+    transition: all .5s ease-in;
 }
 
 .logo{
@@ -173,6 +180,12 @@ form .form-group a{
     padding:  5px;
 }
 
+.categories-container.nowrap h3{
+    font-size: 30px;
+    text-transform: uppercase;
+    margin: 20px 0px 20px 0;
+}
+
 .categories-container .head{
     font-size: 46px;
     text-transform: uppercase;
@@ -190,7 +203,6 @@ form .form-group a{
     margin-top: 12px;
 }
 
-
 .category .entities {
     display: flex;
     width: 100%;
@@ -198,7 +210,13 @@ form .form-group a{
     white-space: nowrap;
 }
 
+.categories-container.nowrap .category .entities{
+    flex-wrap: wrap;
+}
+
+
 .entity-square{
+    display: flex;
     width: 210px;
     height: 118px;
     border-radius: 5px;
@@ -206,6 +224,13 @@ form .form-group a{
     max-width: 210px;
     margin-right: 10px;
     overflow: hidden;
+}
+
+.categories-container.nowrap .entity-square{
+    flex: 1;
+    margin: 5px;)
+    min-width: 210px;
+    
 }
 
 .entity-square img{
