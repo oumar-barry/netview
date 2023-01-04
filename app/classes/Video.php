@@ -1,9 +1,21 @@
 <?php
 
     class Video {
+        
+        public function __construct($input){
+            $this->model = new Video_model();
 
-        public function __construct($video){
-            $this->data = $video;
+            if(!is_object($input)){
+                $row = $this->model->getVideoById($input);
+                if(!$row) return redirect('/');    
+                $this->data = $row;
+            } else {
+                $this->data = $input;
+            }
+
+            
+            
+            
         }
 
         public function getId(){
@@ -42,6 +54,20 @@
             return $this->data->season;
         }
 
+        public function getSeasonAndEpisode(){
+            if(!$this->isMovie()){
+                $text = "S".$this->getSeason()." E".$this->getEpisode();
+            } else {
+                $text = "";
+            }
+            return  $text;
+        }
+
+        public function incrementViews(){
+            $views = $this->model->incrementViews($this->getId());
+            $this->data->views = $this->data->views + 1;
+        }
+
         public function getEpisode(){
             return $this->data->episode;
         }
@@ -53,6 +79,26 @@
         public function getEntityId(){
             return $this->data->entityId;
         }
+
+        public function updateProgress($time){
+            $id = $this->getId();
+            $username = $_SESSION['username'];
+            return $this->model->updateProgress($id,$username,$time);
+        }
+
+        public function addIntoProgress(){
+            $id = $this->getId();
+            $username = $_SESSION['username'];
+            return $this->model->addIntoProgress($id,$username);
+        }
+
+        public function setToFinished(){
+            $id = $this->getId();
+            $username = $_SESSION['username'];
+            return $this->model->setToFinished($id,$username);
+        }
+
+    
 
 
 

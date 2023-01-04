@@ -17,7 +17,7 @@
                             <h4> ".$entity->getName()." </h4>
                             <div class='controls'>
                                <button class='play-btn' >PLAY </button>
-                               <button class='mute-btn' > MUTE </button>
+                               <button  class='mute-btn' > MUTE </button>
                             </div>
                         </div>
 

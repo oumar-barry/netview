@@ -20,10 +20,12 @@
 	
 
 	require 'models/Account_model.php';
+	require 'models/Video_model.php';
 	require 'models/VideoPreview_model.php';
 	require 'models/EntityProvider_model.php';
 
 	require 'classes/User.php';
+	require 'classes/VideoProvider.php';
 	require 'classes/Video.php';
 	require 'classes/Season.php';
 	require 'classes/Entity.php';
