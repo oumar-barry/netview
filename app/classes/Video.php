@@ -98,6 +98,12 @@
             return $this->model->setToFinished($id,$username);
         }
 
+        public function getResumeDuration(){
+            $id = $this->getId();
+            $username = $_SESSION['username'];
+            return $this->model->getResumeDuration($id,$username);
+        }
+
     
 
 

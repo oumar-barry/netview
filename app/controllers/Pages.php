@@ -70,6 +70,37 @@
             
         }
 
+        public function search(){
+            $data = [
+                'title' => 'Recherche'
+            ];
+
+            $this->view('Pages/search',$data);
+        }
+
+        public function makeSearch(){
+            if($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
+                $results = (new EntityProvider())->getSearchEntities($_POST['term']);
+                if($results){
+                    $preview = new VideoPreview();
+                    $entitiesHtml = "";
+                    foreach($results as $result){
+                        $entitiesHtml .= $preview->createEntityPreviewSquare($result);
+                    }
+
+                    echo $entitiesHtml;
+
+                } else {
+                    echo "";
+                }
+                
+                //echo json_encode($results);
+                
+
+            }
+
+        }
+
         public function login(){
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -20,6 +20,7 @@
                         <a href="#">Category</a>
                         <a href="<?= URL_ROOT ?>/Shows">TV / Series</a>
                         <a href="<?= URL_ROOT ?>/Movies">Films</a>
+                        <a href="<?= URL_ROOT ?>/Pages/search"><i class="fas fa-search"></i></a>
                         <?php if(User::isLoggedIn()): ?>
                             <a href="<?= URL_ROOT ?>/Pages/logout">Deeconnexion</a>
                         <?php else: ?>

@@ -62,6 +62,15 @@
             return $this->db->multipleRows();
         }
 
+        public function getSearchEntities($term){
+            $query = "select distinct(entities.id) as id, entities.name as name, entities.thumbnail as thumbnail , entities.preview as preview, entities.categoryId as categoryId from videos inner join entities ON entities.id = videos.entityId  WHERE videos.title LIKE :term OR entities.name LIKE :term ORDER BY videos.views DESC ";
+            
+
+            $this->db->query($query);
+            $this->db->bind('term','%'.$term.'%');
+            return $this->db->multipleRows();
+        }
+
     
 
         

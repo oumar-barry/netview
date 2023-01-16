@@ -20,7 +20,7 @@
                         </div>
 
                         $upNextVideo
-                        <video autoplay controls onended='showUpNext()' >
+                        <video autoplay='autoplay' controls onended='showUpNext()' >
                             <source src='".URL_ROOT."/$filePath' type='video/mp4' > </source>
                         </video>
 
@@ -33,7 +33,7 @@
             
             return "<div class='upnext-container'>
                         <div class=''>
-                            <span class='replay'> <i class='fa-solid fa-rotate-left'></i> </span>
+                            <span onClick='replay()' class='replay'> <i class='fa-solid fa-rotate-left'></i> </span>
                             <div class='video'> 
                                 <h4> Continuer ".$upNextVideo->getSeasonAndEpisode()."</h4>
                                 <span class='title'>".$upNextVideo->getTitle()." </span>

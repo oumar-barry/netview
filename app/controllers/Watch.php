@@ -56,6 +56,15 @@
             }
         }
 
+        public function resumePlaying($videoId = ''){
+            if($videoId && ((int) $videoId != 0) && ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest')){
+                
+                $video = new Video($videoId);
+                echo $video->getResumeDuration();
+
+            }
+        }
+
 
     }
 

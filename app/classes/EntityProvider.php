@@ -34,6 +34,19 @@
             return $entities;
         }
 
+        public function getSearchEntities($term){
+            $rows = $this->model->getSearchEntities($term);
+            $entities = [];
+            foreach($rows as $row){
+                $entities[] = new Entity($row);
+            }
+            return $entities;
+        }
+
+
+
+
+
     }
 
 

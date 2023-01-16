@@ -94,6 +94,16 @@
             $this->db->execute('close');   
         }
 
+
+        public function getResumeDuration($id,$username){
+            $this->db->query("SELECT progress FROM videoProgress WHERE videoId = :videoId AND username = :username ");
+
+            $this->db->bind('videoId',$id);
+            $this->db->bind('username',$username);
+            $row = $this->db->singleRow();
+            return $row ? $row->progress : '' ;
+        }
+
     }
 
 ?>

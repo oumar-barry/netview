@@ -12,12 +12,17 @@
                 
             }
 
+            // if we've already started watching an entity 
+            $entityLastVideoId = $this->model->hasStartedWatching($entity);
+            $text = $entityLastVideoId ? 'Continuer': 'Regarder';
+            
+
             return "<div class='preview-video'  >
                         <div class='description'>
                             <h4> ".$entity->getName()." </h4>
                             <div class='controls'>
-                               <button class='play-btn' >PLAY </button>
-                               <button  class='mute-btn' > MUTE </button>
+                               <button onClick=watch(\"".$entityLastVideoId."\")  class='play-btn' > $text </button>
+                               <button class='mute-btn' > <i class='fa-solid fa-volume-xmark'></i> </button>
                             </div>
                         </div>
 

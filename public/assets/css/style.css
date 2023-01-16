@@ -225,6 +225,7 @@ form .form-group a{
     max-width: 210px;
     margin-right: 10px;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .categories-container.nowrap .entity-square{
@@ -386,8 +387,39 @@ form .form-group a{
     cursor: pointer;
 }
 
+.search-container{
+    padding-top: 72px;
+    margin-bottom: 15px;
+    width: 60%;
+    display: flex;
+}
+
+#search{
+    flex: 1;
+    height: 70px;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    padding-left: 30px;
+}
+
+.search-container button{
+    width: 60px;
+    outline; none;
+    border: none;
+    background: transparent;
+}
+
+.results{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
+.results.entity-square{
+    margin-bottom: 10px;
+}
 
 
 
